@@ -7,11 +7,15 @@ type Bindings = {
 };
 async function startMcp(c: Context) {
     const customDescription = c.req.header("X-TOOL-DESCRIPTION");
+    const customResponseText = c.req.header("X-RESPONSE-TEXT");
     const transport = new StreamableHTTPTransport({
         sessionIdGenerator: undefined,
     });
     transport.handleRequest;
-    await mcpBuilder({ toolDescription: customDescription }).connect(transport);
+    await mcpBuilder({
+        toolDescription: customDescription,
+        toolResponseText: customResponseText,
+    }).connect(transport);
     return transport.handleRequest(c);
 }
 

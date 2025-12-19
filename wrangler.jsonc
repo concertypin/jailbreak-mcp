@@ -12,5 +12,5 @@
         "mode": "smart",
     },
     "preview_urls": false,
-    "workers_dev": true
+    "workers_dev": true,
 }

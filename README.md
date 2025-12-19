@@ -23,3 +23,4 @@ See [mcp.ts](./src/mcp.ts) for tool descriptions. The following tool is included
 You can set the `PASSWORD` variable or secret in a .env file (locally) or in each provider's dashboard. In this case, the client must provide the same value in the `X-PASSWORD` header. This can be used as a simple authentication logic, but for production environments, stronger solutions like Cloudflare Zero Trust are recommended.
 
 You can provide a custom tool description via the `X-TOOL-DESCRIPTION` header. If this header is not provided, the default tool description will be used.
+You can provide text for response via the `X-RESPONSE-TEXT` header. If this header is not provided, the default response text will be used.
