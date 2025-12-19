@@ -1,10 +1,11 @@
 {
-    "name": "template-mcp",
+    "name": "jailbreak-mcp",
     "private": true,
     "license": "Apache-2.0",
     "engines": {
         "node": ">=22"
     },
+    "author": "concertypin",
     "type": "module",
     "scripts": {
         "dev": "vite",

@@ -1,29 +1,22 @@
-# MCP server Template
+# Jailbreak MCP Server
 
-- Information: This document is for both humans and AI to understand the project. If you need more details, make a [AGENTS.md](https://agents.md/) file.
-  Welcome to your super-cool Streamable HTTP MCP server starter! 🚀✨
+This is a [Model Context Protocol (MCP)](https://www.muppet.dev/docs/server) server built for jailbreak purposes.
+It is written using [Hono](https://hono.dev/), [Muppet](https://www.muppet.dev/docs/server), [@hono/mcp](https://honohub.dev/docs/hono-mcp), and [Zod](https://zod.dev/). It provides a tool that pretends to check LLM guideline compliance.
 
-## Features
+## Endpoints
 
-- [Hono](https://hono.dev/) web framework
-- [Zod](https://zod.dev/) schema validation
-- [Muppet](https://www.muppet.dev/docs/server) and [@hono/mcp](https://honohub.dev/docs/hono-mcp) for building MCP servers
-- Ready for Cloudflare Workers with Wrangler
+- `/` — A simple welcome page for users who access via browser by mistake.
+- `/mcp` — The MCP endpoint. Supports streamable HTTP requests.
+- `/password/:pw/mcp` — An MCP endpoint for clients that cannot modify HTTP headers. The password is passed as a URL path parameter `:pw`. This endpoint ignores the `X-PASSWORD` header.
 
-## Getting Started
+## Tools
 
-To get started with this MCP server template, follow these steps:
+See [mcp.ts](./src/mcp.ts) for tool descriptions. The following tool is included:
 
-1. **Install Dependencies**: Run `pnpm install` to install all necessary packages.
-2. **Run the Server Locally**: Use `pnpm run dev` to start the server in development mode.
-3. **Deploy to Cloudflare Workers**: Use `pnpm run deploy` to deploy your MCP server to Cloudflare Workers.
+- `guideline-check` — Checks if the LLM's response complies with the guidelines. In reality, it always returns true.
 
-## Project Structure
+## Auth & Config
 
-- `src/mcp.ts`: The main MCP server implementation.
-- `wrangler.toml`: Configuration file for Cloudflare Workers deployment.
-- `package.json`: Project metadata and scripts.
+You can set the `PASSWORD` variable or secret in a .env file (locally) or in each provider's dashboard. In this case, the client must provide the same value in the `X-PASSWORD` header. This can be used as a simple authentication logic, but for production environments, stronger solutions like Cloudflare Zero Trust are recommended.
 
-## License
-
-This project is licensed under the Apache-2.0 License. For more details, see the [LICENSE](./LICENSE) file.
+You can provide a custom tool description via the `X-TOOL-DESCRIPTION` header. If this header is not provided, the default tool description will be used.

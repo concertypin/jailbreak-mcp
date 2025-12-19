@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
     plugins: [cloudflare()],
     server: {
+        allowedHosts: true,
         cors: false, // https://hono.dev/docs/middleware/builtin/cors#using-with-vite
     },
     build: {
