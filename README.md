@@ -1,3 +1,6 @@
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/concertypin/jailbreak-mcp)
+[Korean version](./README.ko.md)
+
 # Jailbreak MCP Server
 
 This is a [Model Context Protocol (MCP)](https://www.muppet.dev/docs/server) server built for jailbreak purposes.
